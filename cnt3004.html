@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CNT 3004 – Computer Network Concepts | Tyler Kopp</title>
+  <meta name="description" content="Tyler Kopp's reflections on the homework, labs, quizzes, and discussions in CNT 3004 – Computer Network Concepts at the University of Central Florida.">
+  <meta name="theme-color" content="#0b1220">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b1220'/%3E%3Ctext x='50%25' y='56%25' text-anchor='middle' dominant-baseline='middle' font-family='Arial' font-weight='700' font-size='30' fill='%23fbbf24'%3ETK%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="nav-brand" href="index.html">Tyler <span>Kopp</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cnt3004.html" aria-current="page">CNT 3004</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="goals.html">Professional Goals</a></li>
+        <li><a href="certifications.html">Certifications &amp; Activities</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Course Portfolio</p>
+        <h1>CNT 3004 – Computer Network Concepts</h1>
+        <p class="lead">Reflections on each homework assignment and lab I completed this semester, along with what I took away from the quizzes, discussions, and the course as a whole.</p>
+        <div class="course-meta">
+          <span class="chip">University of Central Florida</span>
+          <span class="chip">Instructor: Dr. Ali Alkinoon</span>
+          <span class="chip">Fall 2026</span>
+          <span class="chip">Wireshark &middot; Windows networking tools &middot; VirtualBox</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container narrow">
+        <nav class="toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <ol>
+            <li><a href="#hw1">Homework 1 – Networking Fundamentals</a></li>
+            <li><a href="#hw2">Homework 2 – Addressing, Ports &amp; First Traces</a></li>
+            <li><a href="#hw3">Homework 3 – Network Media &amp; Wireless</a></li>
+            <li><a href="#hw4">Homework 4 – Virtualization, Subnetting &amp; HTTP</a></li>
+            <li><a href="#hw56">Homework 5 &amp; 6 – Security, WANs &amp; TCP Recovery</a></li>
+            <li><a href="#quizzes-discussions">Quizzes &amp; Discussions</a></li>
+            <li><a href="#overall-reflection">Overall Course Reflection</a></li>
+          </ol>
+        </nav>
+
+        <p class="section-label">Assignments &amp; Labs</p>
+        <h2>Homework reflections</h2>
+        <p class="muted">Each assignment combined written questions with a hands-on portion, usually a Wireshark lab. Following the course guidelines, the original assignment files and screenshots are not posted here.</p>
+
+        <!-- Homework 1 -->
+        <article class="reflection" id="hw1">
+          <header>
+            <p class="kicker">Homework 1 &middot; Chapters 1 and 2</p>
+            <h3>Networking Fundamentals, Cabling, and Network Tools</h3>
+          </header>
+
+          <h4>My experience</h4>
+          <p>This first assignment covered the building blocks of networking. I worked through the OSI and TCP/IP models, the sizes and purposes of MAC addresses, IP addresses, and port numbers, and the differences between network topologies. I also traced the path a connection takes from a laptop, through a wall jack and patch panel, to the IDF, MDF, demarc, and finally the ISP. For the hands-on portion, I documented and diagrammed my own home network, inspected a web request in my browser's Developer Tools, and used <code>ping</code>, <code>tracert</code>, and <code>ipconfig /all</code> before installing Wireshark for the first time.</p>
+
+          <h4>Key skills and concepts</h4>
+          <ul class="tags">
+            <li>OSI &amp; TCP/IP models</li><li>Encapsulation</li><li>MAC vs. IP addressing</li><li>Star &amp; mesh topologies</li><li>Structured cabling</li><li>ping / tracert / ipconfig</li><li>Network diagramming</li>
+          </ul>
+          <ul>
+            <li>How data is encapsulated into segments, packets, and frames as it moves down the stack, and de-encapsulated at the receiver.</li>
+            <li>Why a switch forwards frames using MAC addresses inside a LAN while a router forwards packets between networks.</li>
+            <li>How to calculate full-mesh cabling with <em>n(n&nbsp;&minus;&nbsp;1)/2</em> (21 cables for seven devices).</li>
+          </ul>
+
+          <h4>Challenges I faced</h4>
+          <p>Documenting my network was harder than expected because I live in an apartment building where much of the upstream equipment is managed by the property and is not visible to me. I had to separate what I could directly observe from what I could only infer. Traceroute also surprised me: one trace returned timeouts (<code>* * *</code>) at every hop. I learned that many routers deprioritize or block the messages traceroute relies on, so a timeout does not necessarily mean the destination is unreachable.</p>
+
+          <h4>Overall takeaway</h4>
+          <p>This assignment gave me a mental map of how a network is physically and logically organized. Knowing the path from wall jack to ISP gives me a structured way to troubleshoot, starting with the simplest physical components before assuming a switch or the Internet connection has failed.</p>
+        </article>
+
+        <!-- Homework 2 -->
+        <article class="reflection" id="hw2">
+          <header>
+            <p class="kicker">Homework 2 &middot; Chapters 3 and 4</p>
+            <h3>IP Addressing, Ports, and HTTP, TCP, UDP &amp; DNS Traces</h3>
+          </header>
+
+          <h4>My experience</h4>
+          <p>In this assignment I explored how my own computer is configured. I used <code>netstat -e</code>, <code>ipconfig /all</code>, <code>arp -a</code>, <code>route print</code>, <code>ping -6</code>, and <code>w32tm /query /source</code>, and I researched services in the IANA port number registry. In the Wireshark portion, I captured four kinds of traffic: an HTTP GET and 200 OK exchange, a TCP three-way handshake, a UDP-based DNS query, and a DNS A-record response.</p>
+
+          <h4>Key skills and concepts</h4>
+          <ul class="tags">
+            <li>Well-known ports</li><li>IPv4 vs. IPv6</li><li>Subnet masks</li><li>ARP &amp; default routes</li><li>APIPA</li><li>TCP handshake &amp; RTT</li><li>UDP</li><li>DNS records &amp; TTL</li>
+          </ul>
+          <ul>
+            <li>Reading the SYN, SYN-ACK, and ACK sequence and acknowledgment numbers, and calculating round-trip time from packet timestamps.</li>
+            <li>Why DNS typically uses connectionless UDP on port 53 while web traffic relies on TCP's reliable connection.</li>
+            <li>How DNS TTL values trade off faster updates against fewer repeated lookups.</li>
+          </ul>
+
+          <h4>Challenges I faced</h4>
+          <p>Modern browsers automatically upgrade HTTP to HTTPS, which hides the plain HTTP messages the lab needed to examine. I had to make sure the browser loaded the test page over plain HTTP before the GET and response would appear in Wireshark. Some results also did not match what I expected: my computer had only a link-local IPv6 address, so <code>ping -6</code> failed, and Windows was using its local hardware clock instead of a network time server. Rather than forcing an answer, I learned to report the real result and explain what it meant.</p>
+
+          <h4>Overall takeaway</h4>
+          <p>Command-line tools and packet captures show what is actually happening on a system, not just what the textbook says should happen. This assignment taught me to rely on evidence and to explain unexpected results instead of ignoring them, which is an essential habit for troubleshooting and security work.</p>
+        </article>
+
+        <!-- Homework 3 -->
+        <article class="reflection" id="hw3">
+          <header>
+            <p class="kicker">Homework 3 &middot; Chapters 5 and 6</p>
+            <h3>Network Media, Wireless Networking, and Wi-Fi Frame Analysis</h3>
+          </header>
+
+          <h4>My experience</h4>
+          <p>This assignment focused on how data physically travels. I compared coaxial, twisted-pair, and fiber-optic cabling; explained noise, crosstalk, and attenuation; and contrasted straight-through and crossover cables using the T568A and T568B standards. On the wireless side, I studied spectrum, signal propagation, CSMA/CA, SSIDs and BSSIDs, and Wi-Fi security. I checked my Ethernet adapter's speed and duplex settings in Device Manager. Then I used Wireshark to analyze a Wi-Fi capture, filtering management, control, and data frames and examining beacon frames.</p>
+
+          <h4>Key skills and concepts</h4>
+          <ul class="tags">
+            <li>Copper &amp; fiber media</li><li>Bandwidth vs. throughput</li><li>Multiplexing</li><li>T568A / T568B</li><li>CSMA/CD vs. CSMA/CA</li><li>802.11 frame types</li><li>WPA2 / WPA3</li><li>Wireshark display filters</li>
+          </ul>
+          <ul>
+            <li>Using filters such as <code>wlan.fc.type == 0</code> to separate management, control, and data frames.</li>
+            <li>Calculating Wi-Fi overhead: management and control frames made up about 73% of the capture, which explains why real throughput is far below the advertised link rate.</li>
+            <li>Converting a 102.4&nbsp;ms beacon interval into roughly 9.77 beacons per second.</li>
+          </ul>
+
+          <h4>Challenges I faced</h4>
+          <p>The throughput portion required a capture of a real file download, and my first attempts did not record a substantial transfer. The largest conversation was only a few hundred bytes, so there was nothing meaningful to measure. That taught me to plan a capture around the traffic I actually need. I also found 10 frames that did not match any of the three standard frame types. By writing a negated filter, I isolated them and saw that Wireshark labeled them as unknown protocol versions.</p>
+
+          <h4>Overall takeaway</h4>
+          <p>I now understand why a connection's advertised speed is rarely what users experience. Interference, distance, contention, and protocol overhead all reduce throughput. This assignment also made me more confident writing precise Wireshark filters to answer a specific question.</p>
+        </article>
+
+        <!-- Homework 4 -->
+        <article class="reflection" id="hw4">
+          <header>
+            <p class="kicker">Homework 4 &middot; Chapters 7 and 8</p>
+            <h3>Virtualization, Cloud, Subnetting, VLANs, and the HTTP Wireshark Lab</h3>
+          </header>
+
+          <h4>My experience</h4>
+          <p>This assignment combined several major topics. I compared Type 1 and Type 2 hypervisors; bridged, NAT, and host-only VM networking; IaaS, PaaS, and SaaS; and remote access protocols such as SSH, Telnet, RDP, and VPNs. I worked through IPv4 address classes, CIDR notation, and subnetting problems, then designed a two-switch VLAN network with a trunk link and diagnosed why two computers in the same VLAN could not communicate. I installed VirtualBox and ran an Ubuntu virtual machine on my Windows computer. In the Wireshark portion, I analyzed HTTP GET and response messages, conditional GETs, long documents, and pages with embedded objects.</p>
+
+          <h4>Key skills and concepts</h4>
+          <ul class="tags">
+            <li>Hypervisors &amp; VMs</li><li>Cloud service models</li><li>SSH, RDP &amp; VPNs</li><li>CIDR &amp; subnetting</li><li>VLANs &amp; trunking</li><li>Inter-VLAN routing</li><li>HTTP caching</li><li>VirtualBox &amp; Ubuntu</li>
+          </ul>
+          <ul>
+            <li>Dividing 192.168.20.0/24 into four /26 subnets with 62 usable hosts each, and finding the network, broadcast, and host range for a given address.</li>
+            <li>Fixing a VLAN problem by allowing the VLAN on the trunk ports of both switches, and understanding that traffic between VLANs requires a router or Layer&nbsp;3 switch.</li>
+            <li>Seeing browser caching in action: a second request included <code>If-Modified-Since</code>, and the server replied <code>304 Not Modified</code> instead of resending the page.</li>
+          </ul>
+
+          <h4>Challenges I faced</h4>
+          <p>Subnet masks that do not fall on an octet boundary, such as /19 and /20, were the hardest part. I had to slow down, work through the binary AND operation, and use the block-size method to find each network address correctly. In the HTTP lab, I also had to manage my browser's cache carefully so I could capture both the full 200 OK response and the later 304 response.</p>
+
+          <h4>Overall takeaway</h4>
+          <p>Subnetting finally clicked once I practiced it step by step, and I now see how VLANs and subnets work together to segment a network. That kind of segmentation is a core security control. Running Ubuntu in VirtualBox also gave me a safe, isolated environment I can keep using to practice Linux and security tools.</p>
+        </article>
+
+        <!-- Homework 5 & 6 -->
+        <article class="reflection" id="hw56">
+          <header>
+            <p class="kicker">Homework 5 &amp; 6 &middot; Chapters 9 through 12</p>
+            <h3>Network Security, Risk Management, WANs, and TCP Fault Recovery</h3>
+          </header>
+
+          <h4>My experience</h4>
+          <p>This combined assignment connected networking to security and operations. I researched five security certifications (CEH, CISM, Security+, CISSP, and CISA) and five risk management platforms, and I compared WAN technologies including ATM, Frame Relay, SONET, MPLS, and satellite. Using the Microsoft Management Console, I added Device Manager, Event Viewer, and Services snap-ins to inspect hardware, system logs, and background services. I also analyzed security scenarios and policies, firewalls, switch port security, redundancy, and the Spanning Tree Protocol. In the Wireshark lab, I captured a real file download and used Expert Information to measure how often TCP had to recover from lost packets.</p>
+
+          <h4>Key skills and concepts</h4>
+          <ul class="tags">
+            <li>Security certifications</li><li>GRC &amp; risk tools</li><li>WAN technologies &amp; MPLS</li><li>MMC &amp; Event Viewer</li><li>Security policies</li><li>Firewalls &amp; NGFWs</li><li>STP &amp; redundancy</li><li>TCP retransmission analysis</li>
+          </ul>
+          <ul>
+            <li>Matching threats to controls: phishing-resistant MFA for credential phishing, patching for outdated router firmware, and least-privilege access for unauthorized file access.</li>
+            <li>Reading Windows System log severity levels (Information, Warning, and Error) and interpreting individual events.</li>
+            <li>Identifying the download's TCP stream in the Conversations window and calculating its retransmission rate (about 19.7%), then comparing it with a provided lossy capture (about 1.26%).</li>
+          </ul>
+
+          <h4>Challenges I faced</h4>
+          <p>My capture contained many TCP connections, not just the download, so finding the right stream took some care. I sorted the TCP conversations by bytes and checked the server address and timing before filtering on that stream. I also had to understand the difference between regular and fast retransmissions so I would not double-count them in the retransmission-rate formula.</p>
+
+          <h4>Overall takeaway</h4>
+          <p>TCP hides packet loss from the user, but that loss still costs time and bandwidth because missing data must be resent and the sender slows down. Researching certifications and risk management tools also gave me a clearer picture of the cybersecurity career paths available to me and the credentials that support them.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="quizzes-discussions">
+      <div class="container narrow">
+        <p class="section-label">Quizzes &amp; Discussions</p>
+        <h2>Reinforcing the concepts</h2>
+        <div class="callout">
+          <p>The quizzes kept me accountable for the material in each chapter. Questions on the OSI model, port numbers, IP address classes, and subnetting pushed me to memorize the essentials and also understand them well enough to apply. When I missed a question, it usually pointed to a gap I could close before the next homework, especially in subnetting and wireless concepts.</p>
+          <p>The discussions helped me connect the course to real situations. Reading how classmates approached the same topics, from home network setups to security policies and threats, showed me that there is often more than one reasonable way to design or troubleshoot a network. Explaining my own reasoning in writing also helped me recognize what I truly understood.</p>
+          <p>The key takeaways that carried across the quizzes and discussions were the layered model of network communication, how addressing and subnetting organize networks, the trade-offs between wired and wireless media, and the role of policies and controls in keeping a network secure.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="overall-reflection">
+      <div class="container narrow">
+        <p class="section-label">Overall Reflection</p>
+        <h2>What this course meant for me</h2>
+        <p>At the start of CNT 3004, I knew how to use a network but not how one actually works. Over the semester, I built that understanding layer by layer: the cables and wireless signals that carry data, the addressing and subnetting that organize it, the protocols that move it reliably, and the security controls that protect it.</p>
+        <p>My skills improved most in hands-on analysis. In the first homework, I was still learning to use Wireshark. By the final assignment, I was capturing my own traffic, isolating a single TCP stream among dozens, and calculating retransmission rates. I also became comfortable with Windows networking commands, the Microsoft Management Console, and running Linux in a virtual machine. Just as important, I learned to treat unexpected results as clues to investigate rather than mistakes to hide.</p>
+        <p>This course directly supports my goal of working in cybersecurity. Security analysts need to recognize normal network behavior before they can spot abnormal behavior, and the packet analysis, log review, and troubleshooting I practiced here are the same skills used to investigate incidents. CNT 3004 gave me both a solid foundation and the confidence to keep building on it, starting with industry certifications and more advanced security coursework.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year">2026</span> Tyler Kopp. All rights reserved.</p>
+      <p><a href="https://www.linkedin.com/in/tylerkopp2" target="_blank" rel="noopener">LinkedIn</a> &middot; Information Technology, University of Central Florida</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
